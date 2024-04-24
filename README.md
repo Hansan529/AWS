@@ -68,3 +68,20 @@ Route53의 호스팅 영역에서 레코드를 생성하여
 생성 후, S3 버킷에서 객체를 업로드하면 해당 도메인에 업로드한 객체를 볼 수 있다.
 
 </details>
+
+<br />
+
+<details>
+<summary>Lambda</summary>
+
+## Lambda 함수
+
+사용자 지정 함수 이름을 설정하주고, 함수를 생성한다.
+
+<img width="1636" alt="007" src="https://github.com/Hansan529/AWS/assets/115819770/70e6d86a-3eda-4faa-8122-0480e6070d96" />
+
+모니터링에서 `CloudWatch Logs 보기`가 있는데, 해당 로그 스트림에서 실행 로그를 볼 수 있다.
+
+코드를 원하는대로 수정한 후 API Gateway 작업을 진행한다.
+
+</details>
