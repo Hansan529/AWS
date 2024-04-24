@@ -85,3 +85,48 @@ Route53의 호스팅 영역에서 레코드를 생성하여
 코드를 원하는대로 수정한 후 API Gateway 작업을 진행한다.
 
 </details>
+
+<br />
+
+<details>
+<summary>API Gateway</summary>
+
+## API Gateway
+
+<img width="834" alt="008" src="https://github.com/Hansan529/AWS/assets/115819770/80387c0e-e1e7-4cc3-b274-5d2e180da46e" />
+
+Rest API를 생성할 것이다.
+
+새 API와 API 이름을 설정해주고, API 생성 해준다.
+
+그 후에 메서드 생성을 한다.
+
+<img width="836" alt="009" src="https://github.com/Hansan529/AWS/assets/115819770/3e2a196a-ebf9-48f0-a7ca-228890c69672" />
+
+Lambda를 사용 할 것이니까, Lambda 함수를 택하고, Lambda 프록시 통합을 체크한다.
+
+그리고 Lambda 함수를 생성한 리전을 선택 후, 추가한 뒤 메서드 생성을 한다.
+
+메인 페이지에서 API 배포를 클릭해 스테이지를 원하는 영문 이름으로 생성한다.
+
+<img width="1200" alt="010" src="https://github.com/Hansan529/AWS/assets/115819770/258eedca-3519-40b3-8aa1-fed1480e20eb" />
+
+다음과 같이 스테이지 생성이 완료되었다.
+
+### API 키
+
+<img width="1248" alt="011" src="https://github.com/Hansan529/AWS/assets/115819770/684a6932-9df3-473f-a785-f6312477bc66" />
+
+API 키 생성을 해준 뒤, 해당 API를 컨트롤하기 위한 "사용량 계획" 을 생성해준다.
+
+초당 최대 요청, 한번에 요청 횟수, 요청 할당량을 설정 할 수 있다.
+
+이를 스테이지와 API 키와 연결해주면, 사용량 계획 설정이 마무리된다.
+
+<img width="2039" alt="012" src="https://github.com/Hansan529/AWS/assets/115819770/8a115998-118a-4a9e-8d70-c371f95bbcf6" />
+
+API 키를 요구하게 하여, POST 요청에서 x-api-key 헤더가 없을 경우 결과를 return 하지 않도록 할 수 있다.
+
+</details>
+
+<br />
