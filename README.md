@@ -38,7 +38,13 @@
 
 다음으로, **권한** 탭에서 버킷 정책을 설정한다.
 
+버킷 정책 편집에서 편집을 통해 버킷 ARN을 복사한 뒤
+
 [버킷 정책 생성 사이트](https://awspolicygen.s3.amazonaws.com/policygen.html) 를 통해 쉽게 생성 가능하다.
+
+Action은 GetObject로 지정하면 된다.
+
+<img width="850" alt="005_1" src="https://github.com/Hansan529/AWS/assets/115819770/b5be989f-78b1-4e5d-82aa-bc491344e6dd" />
 
     {
         "Version": "2012-10-17",
@@ -130,3 +136,67 @@ API 키를 요구하게 하여, POST 요청에서 x-api-key 헤더가 없을 경
 </details>
 
 <br />
+
+<details>
+<summary>ColudFront + HTTPS</summary>
+
+## CloudFront를 통해 https 인증서 작업이 가능함
+
+<!-- Lambda Function URL은 커스텀 도메인 맵핑이 불가능하며, WAF, 인증 서비스가 없음
+하지만 CloudFront로 해결 가능하다.
+
+**API Gateway REST API 보다 호출 비용이 저렴함**!!
+APi Gateway REST API $3.5/million vs Cloudfront HTTPS $1.2/million -->
+
+ACM 인증서는 `버지니아 북부` 리전에서만 생성한다. CloudFront가 버지니아 북부에서 사용되기 때문
+
+### 인증서 발급
+
+Certificate Manager에서 인증서 요청
+
+<img width="1200" alt="013" src="https://github.com/Hansan529/AWS/assets/115819770/a6ebb591-0b96-454d-86ad-d89ebb93c07f" />
+
+Route53에 호스팅한 도메인과, 와일드카드를 포함해 도메인을 추가
+
+생성한 인증서에서 `Route 53에서 레코드 생성`, 그 후 해당 인증서 접속 후, **Route 53에서 레코드 생성** 추가 한 뒤 상태가 발급됨으로 변경될 때 까지 기다린다.
+
+버킷에서 정적 웹 사이트 호스팅 엔드포인트 주소를 복사한 뒤에 CloudFront 서비스에서
+
+**배포 생성**
+
+<img width="838" alt="013_1" src="https://github.com/Hansan529/AWS/assets/115819770/2e793ef1-e9e9-48c6-a091-f0566a47a6f4" />
+
+Origin domain 영역에 붙여넣기한다.
+
+그 후, 기본 캐시 동작에서 `뷰어 프로토콜 정책: Redirect HTTP to HTTPS`,  
+캐시 키 및 원본 요청에서 Legacy cache settings, 웹 애플리케이션 방화벽(WAF) 비활성화
+
+설정: 대체 도메인 이름에 주소 추가, Custom SSL certificate에서 인증서를 선택한 뒤, 배포 생성을 해준다.
+
+시간이 지난 후, 배포가 완료되면 기존 S3로 연결되는 엔드포인트를 Cloudfront로 변경해주는 작업을 진행 하는 작업이 남아있다.
+
+<img width="372" alt="013_2" src="https://github.com/Hansan529/AWS/assets/115819770/64f420c5-517a-4b2c-bbf8-55a6868fea7a" />
+
+변경 완료하면 HTTPS 작업 완료, 적용이 될 때 까지 시간이 걸릴 수 있음
+
+</details>
+
+<br />
+
+## API Gateway 사용자 지정 도메인 이름 설정
+
+<img width="1213" alt="014" src="https://github.com/Hansan529/AWS/assets/115819770/123548ba-f32a-4284-885e-d20e45cfba08" />
+
+기존 API 게이트웨이에서 URL은 AWS에서 설정한 임의의 경로로 되어 있는데, 이를 커스텀 도메인으로 변경하기 위한 작업을 할 것이다.
+
+<img width="1190" alt="015" src="https://github.com/Hansan529/AWS/assets/115819770/c406d86e-5800-4b40-a419-69b5c237ee4d" />
+
+사용자 지정 도메인 이름을 작성하고, ACM 인증서를 적용 한 다음 도메인을 생성한다.
+
+<img width="1200" alt="016" src="https://github.com/Hansan529/AWS/assets/115819770/51cd9cb7-e791-4891-90a1-0ab8b765ae78" />
+
+API 매핑에서 API, 스테이지를 지정해준다.
+
+API Gateway 도메인 이름을 Route53 호스팅 영역에서 해당 도메인에 레코드를 생성한다.
+
+<img width="1200" alt="017" src="https://github.com/Hansan529/AWS/assets/115819770/75712906-6a08-4af6-9d0f-029a7bd6f45f" />
