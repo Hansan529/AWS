@@ -200,3 +200,15 @@ API 매핑에서 API, 스테이지를 지정해준다.
 API Gateway 도메인 이름을 Route53 호스팅 영역에서 해당 도메인에 레코드를 생성한다.
 
 <img width="1200" alt="017" src="https://github.com/Hansan529/AWS/assets/115819770/75712906-6a08-4af6-9d0f-029a7bd6f45f" />
+
+### \+ 요청 경로 설정
+
+<img width="1146" src="https://github.com/Hansan529/AWS/assets/115819770/cea3e3eb-3ce8-43c1-9725-1b737aef1035" />
+
+스테이지에 요청 경로를 추가하면 해당 경로를 설정하면, `http://example.com` 에서 POST 요청을 하면, 
+
+    {
+        "message": "Missing Authentication Token"
+    }
+
+다음과 같은 결과가 나오며, `http://example.com/getCtprvnRltmMesureDnsty` 에서 POST 요청을 하면 이에 해당하는 Lambda 함수가 실행된다.
