@@ -2,6 +2,8 @@
 
 도메인 호스팅에 관련한 문서
 
+<small>[DNSCHECKER](dnschecker.org) DNS 요청 체크 사이트</small>
+
 <details>
 <summary>Route53</summary>
 
