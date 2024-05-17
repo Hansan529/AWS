@@ -65,7 +65,7 @@ Action은 GetObject로 지정하면 된다.
 
 Route53의 호스팅 영역에서 레코드를 생성하여
 
-<img width="1102" alt="006" src="https://github.com/Hansan529/AWS/assets/115819770/fb49f4a1-0a5e-493f-83c9-a754624b5719" />
+<img width="1102" alt="006" src="https://github.com/Hansan529/AWS/blob/main/img/006.webp" />
 
 - 레코드 유형 "A - IPv4 주소 및 일부 AWS 리소스로 트래픽 라우팅"
 - 별칭 Toggle
@@ -177,7 +177,7 @@ Origin domain 영역에 붙여넣기한다.
 
 시간이 지난 후, 배포가 완료되면 기존 S3로 연결되는 엔드포인트를 Cloudfront로 변경해주는 작업을 진행 하는 작업이 남아있다.
 
-<img width="372" alt="013_2" src="https://github.com/Hansan529/AWS/assets/115819770/64f420c5-517a-4b2c-bbf8-55a6868fea7a" />
+<img width="372" alt="013_2" src="https://github.com/Hansan529/AWS/blob/main/img/013.webp" />
 
 변경 완료하면 HTTPS 작업 완료, 적용이 될 때 까지 시간이 걸릴 수 있음
 
@@ -187,25 +187,25 @@ Origin domain 영역에 붙여넣기한다.
 
 ## API Gateway 사용자 지정 도메인 이름 설정
 
-<img width="1213" alt="014" src="https://github.com/Hansan529/AWS/assets/115819770/123548ba-f32a-4284-885e-d20e45cfba08" />
+<img width="1213" alt="014" src="https://github.com/Hansan529/AWS/blob/main/img/014.webp" />
 
 기존 API 게이트웨이에서 URL은 AWS에서 설정한 임의의 경로로 되어 있는데, 이를 커스텀 도메인으로 변경하기 위한 작업을 할 것이다.
 
-<img width="1190" alt="015" src="https://github.com/Hansan529/AWS/assets/115819770/c406d86e-5800-4b40-a419-69b5c237ee4d" />
+<img width="1190" alt="015" src="https://github.com/Hansan529/AWS/blob/main/img/015.webp" />
 
 사용자 지정 도메인 이름을 작성하고, ACM 인증서를 적용 한 다음 도메인을 생성한다.
 
-<img width="1200" alt="016" src="https://github.com/Hansan529/AWS/assets/115819770/51cd9cb7-e791-4891-90a1-0ab8b765ae78" />
+<img width="1200" alt="016" src="https://github.com/Hansan529/AWS/blob/main/img/016.webp" />
 
 API 매핑에서 API, 스테이지를 지정해준다.
 
 API Gateway 도메인 이름을 Route53 호스팅 영역에서 해당 도메인에 레코드를 생성한다.
 
-<img width="1200" alt="017" src="https://github.com/Hansan529/AWS/assets/115819770/75712906-6a08-4af6-9d0f-029a7bd6f45f" />
+<img width="1200" alt="017" src="https://github.com/Hansan529/AWS/blob/main/img/017.webp" />
 
 ### \+ 요청 경로 설정
 
-<img width="1146" src="https://github.com/Hansan529/AWS/assets/115819770/cea3e3eb-3ce8-43c1-9725-1b737aef1035" />
+<img width="1146" alt="018" src="https://github.com/Hansan529/AWS/blob/main/img/018.webp" />
 
 스테이지에 요청 경로를 추가하면 해당 경로를 설정하면, `http://example.com` 에서 POST 요청을 하면, 
 
