@@ -9,7 +9,7 @@
 
 ## Route53 서비스 페이지에서 호스팅 영역을 추가한다.
 
-<img width="1200" alt="001" src="https://github.com/Hansan529/AWS/assets/115819770/51c54a28-328f-445a-8e3d-fb591a3cd8ed" />
+<img width="1200" alt="001" src="https://github.com/Hansan529/AWS/blob/main/img/001.webp" />
 
 <img width="845" alt="002" src="https://github.com/Hansan529/AWS/assets/115819770/b1e7bf2b-ea93-4e48-97a4-c967769a687b" />  
 
@@ -34,7 +34,7 @@
 
 생성 완료 후, 해당 버킷에 접속해 **속성** 탭에서 아래로 스크롤 후, 정적 웹 사이트 호스팅을 활성화 시켜준다.
 
-<img width="831" alt="005" src="https://github.com/Hansan529/AWS/assets/115819770/0e7091fc-b812-4141-bbba-c1657fd5599d" />
+<img width="831" alt="005" src="https://github.com/Hansan529/AWS/blob/main/img/005.webp" />
 
 별도의 오류 문서가 없다면, 인덱스 문서와 동일하게 index.html로 설정 해주었다.
 
