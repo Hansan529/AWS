@@ -214,3 +214,56 @@ API Gateway 도메인 이름을 Route53 호스팅 영역에서 해당 도메인�
     }
 
 다음과 같은 결과가 나오며, `http://example.com/getCtprvnRltmMesureDnsty` 에서 POST 요청을 하면 이에 해당하는 Lambda 함수가 실행된다.
+
+<br />
+
+## API Gateway 이벤트 목록
+
+요청 주소: 'hostDomain/query?id=abc&pw=123'  
+해당 요청은 Postman에서 실행함
+
+```js
+evnet:  {
+  version: '2.0',
+  routeKey: 'GET /query', // RESTful
+  rawPath: '/query',
+  rawQueryString: 'id=abc&pw=123', // 쿼리 String
+  headers: {
+    accept: '*/*',
+    'accept-encoding': 'gzip, deflate, br',
+    'content-length': '0',
+    host: 'hostDomain', // 요청 주소
+    'postman-token': '*******',
+    'user-agent': 'PostmanRuntime/7.39.0',
+    'x-amzn-trace-id': '*******',
+    'x-forwarded-for': '***.***.**.**', // IP
+    'x-forwarded-port': '443',
+    'x-forwarded-proto': 'https'
+  },
+  queryStringParameters: { id: 'abc', pw: '123' }, // 쿼리 Object
+  requestContext: {
+    accountId: '*******',
+    apiId: '*******',
+    domainName: 'apis.hostDomain', // 요청한 도메인
+    domainPrefix: 'apis',
+    http: {
+      method: 'GET',
+      path: '/query',
+      protocol: 'HTTP/1.1',
+      sourceIp: '***.***.**.**',
+      userAgent: 'PostmanRuntime/7.39.0'
+    },
+    requestId: '*******',
+    routeKey: 'GET /query',
+    stage: '$default',
+    time: '03/Jul/2024:07:33:23 +0000',
+    timeEpoch: *******
+  },
+  isBase64Encoded: false
+}
+```
+
+요청한 RESTful을 확인할 수 있는 routeKey, requestContext.http.method, requestContext.routeKey 가 있다.
+
+요청한 주소는 `rawPath`, `requestContext.http.path` 에서 확인 가능하다.  
+Query 값은 `queryStringParameters` 를 통해 값을 추출할 수 있다..
